@@ -80,7 +80,7 @@ def features_grid(img):
 
 # Tìm cạnh
 def Canny_Detect(img):
-    edge = cv2.Canny (img, 70, 50)
+    edge = cv2.Canny (img, 50, 70)
     return edge
 
 def extract_edge_with_one_image(img):

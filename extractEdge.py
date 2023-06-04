@@ -30,7 +30,7 @@ def features_section(img):
 
 
 path = 'img_data'
-name_fruits = ['cachua', 'cam']
+name_fruits = ['cachua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
 # name_fruits = ['cachua', 'cam', 'chuoi', 'duahau', 'le', 'nho', 'quyt', 'tao', 'thom', 'xoai']
 dataset_train = {}
 dataset_test = {}
@@ -43,7 +43,7 @@ for name in name_fruits:
   images_train = []
   images_test = []
   while index < 250:
-    img_path = path+'/'+name+'/'+name+'_'+str(index)+'.jpg'
+    img_path = path+'/'+name+'/'+name+' ('+str(index+1)+').jpg'
     
     #print(img_path)
     fruit_img = cv2.imread(img_path)
@@ -62,14 +62,14 @@ for name in name_fruits:
       images_train.append(edge)
     if index == 249:
       print('done {} image'.format(index + 1))
-      figure_size = 6
-      plt.figure(figsize=(figure_size,figure_size))
-      plt.subplot(1,2,1),plt.imshow(fruit_img)
-      plt.title('Anh Goc'), plt.xticks([]), plt.yticks([])
-      plt.subplot(1,2,2),plt.imshow(edge)
-      plt.title(name), plt.xticks([]), plt.yticks([])
+      # figure_size = 6
+      # plt.figure(figsize=(figure_size,figure_size))
+      # plt.subplot(1,2,1),plt.imshow(fruit_img)
+      # plt.title('Anh Goc'), plt.xticks([]), plt.yticks([])
+      # plt.subplot(1,2,2),plt.imshow(edge)
+      # plt.title(name), plt.xticks([]), plt.yticks([])
     
-      plt.show()
+      # plt.show()
     index+=1
   dataset_train[name] = images_train
   dataset_test[name] = images_test

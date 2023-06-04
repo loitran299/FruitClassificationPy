@@ -7,7 +7,7 @@ import pandas as pd
 from imageUtil import clustering_image, remove_light_color
 
 def create_df_with_many_images(dataset):
-    columns_name = ['name', 'red_mean', 'red_std', 'green_mean', 'green_std', 'blue_mean', 'blue_std']
+    # columns_name = ['name', 'red_mean', 'red_std', 'green_mean', 'green_std', 'blue_mean', 'blue_std']
     red_means = []
     red_stds = []
     green_means = []
@@ -17,7 +17,7 @@ def create_df_with_many_images(dataset):
     names = []
     for fruit in dataset:
       for img in dataset[fruit]:
-        
+            
         red_channel = img[:,:,0]
         green_channel = img[:,:,1]
         blue_channel = img[:,:,2]
@@ -46,8 +46,9 @@ def create_df_with_many_images(dataset):
 
 
 
+
 path = 'img_data'#@param {type:"string"}
-name_fruits = ['cachua', 'cam']
+name_fruits = ['cachua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
 # name_fruits = ['cachua', 'cam', 'duahau', 'le', 'nho', 'quyt', 'tao', 'thom', 'xoai']
 dataset_train = {}
 dataset_test = {}
@@ -59,7 +60,7 @@ for name in name_fruits:
   images_train = []
   images_test = []
   while index < 250:
-    img_path = path+'/'+name+'/'+name+'_'+str(index)+'.jpg'
+    img_path = path+'/'+name+'/'+name+' ('+str(index+1)+').jpg'
     index+=1
     #print(img_path)
     fruit_img = cv2.imread(img_path)
@@ -78,17 +79,17 @@ for name in name_fruits:
     #Hết 1 loại quả
     if number%250==0:
       print('done {} image'.format(number))
-      figure_size = 6
-      plt.figure(figsize=(figure_size,figure_size))
+      # figure_size = 6
+      # plt.figure(figsize=(figure_size,figure_size))
 
-      plt.subplot(1,2,1),plt.imshow(fruit_img)
-      plt.title('Ảnh gốc'), plt.xticks([]), plt.yticks([])
+      # plt.subplot(1,2,1),plt.imshow(fruit_img)
+      # plt.title('Ảnh gốc'), plt.xticks([]), plt.yticks([])
 
-      plt.subplot(1,2,2),plt.imshow(cluster_img)
-      plt.title(name), plt.xticks([]), plt.yticks([])
+      # plt.subplot(1,2,2),plt.imshow(cluster_img)
+      # plt.title(name), plt.xticks([]), plt.yticks([])
 
      
-      plt.show()
+      # plt.show()
 
     number+=1
   dataset_train[name] = images_train
@@ -99,4 +100,4 @@ df_train = create_df_with_many_images(dataset_train)
 df_test = create_df_with_many_images(dataset_test)
 
 df_train.to_csv("color_features_train.csv", index=False)
-df_test.to_csv("color_features_test.csv", index=False)
+# df_test.to_csv("color_features_test.csv", index=False)

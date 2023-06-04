@@ -9,7 +9,7 @@ import numpy as np
 import cv2
 import pickle
 
-labels = ['cachua', 'cam']
+labels = ['cachua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
 # labels = ['cachua', 'cam', 'chuoi', 'duahau', 'le', 'nho', 'quyt', 'tao', 'thom', 'xoai']
 
 rfc = RandomForestClassifier(random_state=42)
