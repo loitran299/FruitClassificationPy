@@ -45,8 +45,6 @@ def create_df_with_many_images(dataset):
 
 
 
-
-
 path = 'img_data'#@param {type:"string"}
 name_fruits = ['cachua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
 # name_fruits = ['cachua', 'cam', 'duahau', 'le', 'nho', 'quyt', 'tao', 'thom', 'xoai']

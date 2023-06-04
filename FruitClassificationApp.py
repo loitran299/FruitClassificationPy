@@ -38,9 +38,9 @@ class App(tk.Frame):
         path = "img/"+filename
         image = io.imread(path)
         
-        fruitName = self.fruit_classification(image)
-        self.text = Label(self.master, text=fruitName)
-        self.text.place(x=70, y=90)
+        fruitName = self.fruit_classification(image)[0]
+        self.text = Label(self.master, text=fruitName, font=('Courier', 30))
+        self.text.place(x=200, y=10)
         print(self.fruit_classification(image))
         
 
