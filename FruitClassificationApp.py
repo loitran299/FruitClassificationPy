@@ -39,8 +39,7 @@ class App(tk.Frame):
         image = io.imread(path)
         
         fruitName = self.fruit_classification(image)[0]
-        self.text = Label(self.master, text=fruitName, font=('Courier', 30))
-        self.text.place(x=200, y=10)
+        self.text.config(text=fruitName)
         print(self.fruit_classification(image))
         
 
@@ -51,6 +50,9 @@ class App(tk.Frame):
         
         self.btn_filepicker=Button(self.master, text="Chọn ảnh", width=10,bg="blue",fg="white",font="bold" , command=self.filepicker)
         self.btn_filepicker.place(relx=0.4, rely=0.7)
+        
+        self.text = Label(self.master, text='', font=('Courier', 30))
+        self.text.place(x=200, y=10)
         
     def fruit_classification(self, img):
         resized = cv2.resize(img, (200, 200))
