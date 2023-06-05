@@ -9,7 +9,7 @@ import numpy as np
 import cv2
 import pickle
 
-labels = ['cachua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
+labels = ['ca chua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
 # labels = ['cachua', 'cam', 'chuoi', 'duahau', 'le', 'nho', 'quyt', 'tao', 'thom', 'xoai']
 
 rfc = RandomForestClassifier(random_state=42)
@@ -42,7 +42,7 @@ rfc_final = GridSearchCV(rfc, param_grid=rfc_params, n_jobs=-1)
 rfc_final.fit(X_train, Y_train)
 
 print('best param:', rfc_final.best_params_)
-print('train_acc:',accuracy_score(Y_train, rfc_final.predict(X_train)))
+# print('train_acc:',accuracy_score(Y_train, rfc_final.predict(X_train)))
 # rfc_test_acc = accuracy_score(Y_test, rfc_final.predict(X_test))
 # print('test acc:', rfc_test_acc)
 

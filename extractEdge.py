@@ -30,7 +30,7 @@ def features_section(img):
 
 
 path = 'img_data'
-name_fruits = ['cachua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
+name_fruits = ['ca chua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
 # name_fruits = ['cachua', 'cam', 'chuoi', 'duahau', 'le', 'nho', 'quyt', 'tao', 'thom', 'xoai']
 dataset_train = {}
 dataset_test = {}
@@ -56,10 +56,10 @@ for name in name_fruits:
     
     edge = Canny_Detect(image)
 
-    if len(images_test) < test_size*(len(os.listdir(path+'/'+name))):
-      images_test.append(edge)
-    else:
-      images_train.append(edge)
+    # if len(images_test) < test_size*(len(os.listdir(path+'/'+name))):
+    #   images_test.append(edge)
+    # else:
+    images_train.append(edge)
     if index == 249:
       print('done {} image'.format(index + 1))
       # figure_size = 6
@@ -72,7 +72,7 @@ for name in name_fruits:
       # plt.show()
     index+=1
   dataset_train[name] = images_train
-  dataset_test[name] = images_test
+  # dataset_test[name] = images_test
   
   
 # Tạo array gồm các giá trị của featured

@@ -4,31 +4,39 @@ import matplotlib.pyplot as plt
 import os
 import pandas as pd
 
-from imageUtil import clustering_image, remove_light_color
+from imageUtil import clustering_image, remove_light_color, Canny_Detect
 
-# simple_path = 'img_data/cachua'
-# for name in os.listdir(simple_path):
-#   img = cv2.imread(simple_path+'/'+name)
-#   resized = cv2.resize(img, (200, 200))
-#   resized = cv2.cvtColor(resized,cv2.COLOR_BGR2RGB)
+simple_path = 'img_data/cherry'
+for name in os.listdir(simple_path):
+  img = cv2.imread(simple_path+'/'+name)
+  resized = cv2.resize(img, (200, 200))
+  resized = cv2.cvtColor(resized,cv2.COLOR_BGR2RGB)
 
-#   cluster_img, center_color= clustering_image(resized)
+  cluster_img, center_color= clustering_image(resized)
 
-#   figure_size = 12
-#   plt.figure(figsize=(figure_size,figure_size))
 
-#   plt.subplot(1,3,1),plt.imshow(resized)
-#   plt.title('original image'), plt.xticks([]), plt.yticks([])
 
-#   plt.subplot(1,3,2),plt.imshow(cluster_img)
-#   plt.title('cluster image'), plt.xticks([]), plt.yticks([])
+  figure_size = 12
+  plt.figure(figsize=(figure_size,figure_size))
 
-#   final_img = remove_light_color(cluster_img, center_color)
+  plt.subplot(1,3,1),plt.imshow(resized)
+  plt.title('original image'), plt.xticks([]), plt.yticks([])
 
-#   plt.subplot(1,3,3),plt.imshow(final_img)
-#   plt.title('image after remove color'), plt.xticks([]), plt.yticks([])
+  plt.subplot(1,3,2),plt.imshow(cluster_img)
+  plt.title('cluster image'), plt.xticks([]), plt.yticks([])
+
+  final_img = remove_light_color(cluster_img, center_color)
+  
+  edge = Canny_Detect(final_img)
+  
+  plt.subplot(1,3,3),plt.imshow(final_img)
+  plt.title('image after remove color'), plt.xticks([]), plt.yticks([])
+  
+  plt.subplot(1,3,3)
+  plt.imshow(edge, cmap='gray')
+  plt.title('Canny edge'), plt.xticks([]), plt.yticks([])
  
-#   plt.show()
+  plt.show()
 
 
 #@title read and pre-processing image

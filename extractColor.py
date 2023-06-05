@@ -46,7 +46,7 @@ def create_df_with_many_images(dataset):
 
 
 path = 'img_data'#@param {type:"string"}
-name_fruits = ['cachua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
+name_fruits = ['ca chua', 'cam', 'chanh', 'cherry', 'dua luoi', 'man', 'mo', 'nho', 'quyt', 'tao']
 # name_fruits = ['cachua', 'cam', 'duahau', 'le', 'nho', 'quyt', 'tao', 'thom', 'xoai']
 dataset_train = {}
 dataset_test = {}
@@ -69,10 +69,10 @@ for name in name_fruits:
 
     cluster_img = remove_light_color(cluster_img, center_color)
     
-    if len(images_test) < test_size*(len(os.listdir(path+'/'+name))):
-      images_test.append(cluster_img)
-    else:
-      images_train.append(cluster_img)
+    # if len(images_test) < test_size*(len(os.listdir(path+'/'+name))):
+    #   images_test.append(cluster_img)
+    # else:
+    images_train.append(cluster_img)
    
     #Hết 1 loại quả
     if number%250==0:
@@ -91,11 +91,11 @@ for name in name_fruits:
 
     number+=1
   dataset_train[name] = images_train
-  dataset_test[name] = images_test
+  # dataset_test[name] = images_test
   
   
 df_train = create_df_with_many_images(dataset_train)
-df_test = create_df_with_many_images(dataset_test)
+# df_test = create_df_with_many_images(dataset_test)
 
 df_train.to_csv("color_features_train.csv", index=False)
 # df_test.to_csv("color_features_test.csv", index=False)

@@ -16,7 +16,8 @@ def clustering_image(img):
     vectorized = np.float32(vectorized)
     
     #Đây là một tuple được sử dụng để thiết lập các tiêu chí dừng cho giải thuật phân cụm K-means.
-    #Các giá trị còn lại của tuple là 10 và 1.0, lần lượt là số lần lặp tối đa và ngưỡng chấp nhận được cho sự thay đổi giữa trung tâm cụm hiện tại và trung tâm cụm trước đó. Trong trường hợp này, giải thuật sẽ dừng lại sau 10 lần lặp hoặc nếu sự thay đổi giữa trung tâm cụm hiện tại và trung tâm cụm trước đó nhỏ hơn 1.0.
+    #Các giá trị còn lại của tuple là 10 và 1.0, lần lượt là số lần lặp tối đa và ngưỡng chấp nhận được cho sự thay đổi giữa trung tâm cụm hiện tại và trung tâm cụm trước đó. 
+    # Trong trường hợp này, giải thuật sẽ dừng lại sau 10 lần lặp hoặc nếu sự thay đổi giữa trung tâm cụm hiện tại và trung tâm cụm trước đó nhỏ hơn 1.0.
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
     
     # phân 2 cụm tương ứng với xác định đầu ra ảnh chỉ có 2 màu
@@ -65,17 +66,15 @@ def features_grid(img):
     for y in range(0, img.shape[0], 40):
         for x in range(0, img.shape[1], 40):
 
-            # Cropping the image into a section.
+            # Chia ảnh thành từng khối.
             section_img = img[y:y+40, x:x+40]
             
-            # Claculating the mean and stdev of the sectioned image.
+            # tính toán trung bình và độ lệch chuẩn.
             section_mean = np.mean(section_img)
             section_std = np.std(section_img)
             
-            # Appending the above calculated values into features array.
             features = np.append(features, [section_mean, section_std])
     
-    # Returning the features array.
     return features
 
 # Tìm cạnh
